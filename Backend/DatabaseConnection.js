@@ -20,7 +20,7 @@ database.connect((error) => {
         console.log("Database Connected Successfully")
 
         // Run this exactly once.
-        // database.query('DROP DATABASE company;')
+        // database.query('DROP DATABASE tufcode;')
 
         database.query('CREATE DATABASE IF NOT EXISTS tufcode;');
         database.query('USE tufcode;');
@@ -30,6 +30,7 @@ database.connect((error) => {
             (
                 problem_id INT AUTO_INCREMENT PRIMARY KEY,
                 problem_tag ENUM('Easy', 'Medium', 'Hard'),
+                problem_title VARCHAR(50),
                 problem_description TEXT,
                 example_testcases TEXT,
                 example_result TEXT,
