@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import axios, { all } from 'axios'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Problem from './Pages/Problem';
+import Home from './Pages/Home';
 
 function App() {
 	const [loading, setLoading] = useState(false);
@@ -33,22 +35,24 @@ function App() {
 	useEffect(() => {
 		fetchProblems();
 	}, []);
-	
+
 	return (
 		<>
 			<h1>TUFCode</h1>
 			{
-				loading ? <h1>Loading</h1> : 
-				<div>
-					{
-						allProblems && allProblems?.map(problem => (
-							<div key={problem.problem_id}>{problem.problem_title}</div>
-						))
-					}
-				</div>
+				loading ? <h1>Loading</h1> :
+					<Router>
+						<div className="container mx-auto px-4 py-8">
+							<Routes>
+								<Route path="/" element={<Home problems={allProblems} />} />
+								<Route path="/problem/:id" element={<Problem problems={allProblems} />} />
+							</Routes>
+						</div>
+					</Router>
 			}
 		</>
 	)
 }
 
 export default App
+
