@@ -28,7 +28,7 @@ database.connect((error) => {
         database.query(`
             CREATE TABLE IF NOT EXISTS problem
             (
-                problem_id INT AUTO_INCREMENT PRIMARY KEY,
+                problem_id INT PRIMARY KEY,
                 problem_tag ENUM('Easy', 'Medium', 'Hard'),
                 problem_title VARCHAR(50),
                 problem_description TEXT,

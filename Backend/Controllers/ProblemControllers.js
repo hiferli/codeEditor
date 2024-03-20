@@ -35,6 +35,7 @@ export const getAllProblems = (request , response) => {
 
 export const uploadProblem = (request , response) => {
     const { 
+        problem_id,
         problem_title , 
         problem_tag , 
         problem_description , 
@@ -42,7 +43,12 @@ export const uploadProblem = (request , response) => {
         example_result 
     } = request.body;
 
-    if(problem_title === undefined || problem_tag === undefined || problem_description === undefined){
+    if(
+        problem_id === undefined || 
+        problem_title === undefined || 
+        problem_tag === undefined || 
+        problem_description === undefined
+    ){
         return response.status(400).json({
             'error': "Please enter all the information about the problem, including title, tag, description"
         })
@@ -50,6 +56,7 @@ export const uploadProblem = (request , response) => {
         database.query(`
             INSERT INTO problem
             (
+                problem_id ,
                 problem_title , 
                 problem_tag , 
                 problem_description , 
@@ -58,6 +65,7 @@ export const uploadProblem = (request , response) => {
             )
             VALUES
             (
+                '${problem_id}' ,
                 '${problem_title}' , 
                 '${problem_tag}' , 
                 '${problem_description}' , 
