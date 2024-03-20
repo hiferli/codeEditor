@@ -42,7 +42,7 @@ database.connect((error) => {
         database.query(`
             CREATE TABLE IF NOT EXISTS submission
             (
-                submission_id INT AUTO_INCREMENT PRIMARY KEY,
+                submission_id INT PRIMARY KEY,
                 problem_id INT,
                 username VARCHAR(50),
                 submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
