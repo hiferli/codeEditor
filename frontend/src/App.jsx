@@ -38,11 +38,10 @@ function App() {
 
 	return (
 		<>
-			<h1>TUFCode</h1>
 			{
 				loading ? <h1>Loading</h1> :
 					<Router>
-						<div className="container mx-auto px-4 py-8">
+						<div className="">
 							<Routes>
 								<Route path="/" element={<Home problems={allProblems} />} />
 								<Route path="/problem/:id" element={<Problem problems={allProblems} />} />
